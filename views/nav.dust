@@ -1,0 +1,8 @@
+<nav>
+	<ul>
+		<li class="up"><a href="javascript:menuUp();" class="sprite sprite-us"></a></li>
+		<li class="left"><a href="javascript:menuLeft();" class="sprite sprite-work"></a></li>
+		<li class="down"><a href="javascript:menuDown();" class="sprite sprite-contact"></a></li>
+		<li class="right"><a href="javascript:menuRight();" class="sprite sprite-team"></a></li>
+	</ul>
+</nav>

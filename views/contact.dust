@@ -1,0 +1,9 @@
+{>nav/}
+<div class="content-wrapper">
+	<div class="table-center">
+		<div class="v-center">
+			<div id="question-wrapper" class="question-wrapper"></div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="/content/scripts/contact.min.js"></script>

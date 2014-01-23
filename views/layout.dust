@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Interactive Labs || Developing... Talent :) || {title}</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="/content/css/styles.min.css">
+</head>
+<body>
+	<div id="site-wrapper">
+		<section id="main-container" class="container container-home">
+			{+content}
+			{/content}
+		</section>
+		<section id="swap-container" class="container"></section>
+	</div>
+	<script type="text/javascript">
+		var patternList = [];
+		{#files}
+			patternList.push("{.}");
+		{/files}
+		var swapContainer = document.getElementById("main-container");
+		swapContainer.style.backgroundImage = "url('/content/images/patterns/escheresque_ste.png')";
+	</script>
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+	<script type="text/javascript" src="/content/scripts/scripts.min.js"></script>
+</body>
+</html>

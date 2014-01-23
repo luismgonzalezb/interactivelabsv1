@@ -1,0 +1,11 @@
+{>layout/}
+{<content}
+	{>nav/}
+    <div class="content-wrapper">
+		<div class="table-center">
+			<div class="v-center">
+				<!-- <img src="/content/images/logo_inner.png" alt="Logo" > -->
+			</div>
+		</div>
+	</div>
+{/content}

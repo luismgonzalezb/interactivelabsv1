@@ -1,0 +1,13 @@
+<h1>{.question.question}</h1>
+<form method="post" role="form" action="/contact" onsubmit="return false;" >
+	<ul>
+		{#.question.responses}
+			<li class="radio"><label> 
+				<input type="radio" name="response" value="{.id}">
+				{.answer}
+			</label></li>
+		{/.question.responses}
+	</ul>
+	<div class="question-button"><button id="btnSendResponse" class="btn btn-primary" onclick="sendResponse(this.form);">Send Response</button> </div>
+	<input type="hidden" name="_id" value="{.question._id}"></input>
+</form>

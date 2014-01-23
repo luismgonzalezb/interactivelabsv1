@@ -1,0 +1,243 @@
+@import "variables.less";
+@import "elements.less";
+
+html {
+	margin: 0px;
+	padding: 0px;
+	height: 100%;
+}
+body {
+	margin: 0px;
+	padding: 0px;
+	color: @white;
+	height: 100% !important;
+}
+a {
+	color: @white;
+}
+ul {
+	margin:0;
+	padding: 0;
+	list-style: none;
+}
+*, *:before, *:after {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+/***************************************** 
+	GENERAL STYLES
+	**************************************/
+.container {
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	overflow: hidden;
+	background-color: @dark;
+	background-position: top left;
+	background-repeat: repeat;
+}
+#swap-container {
+	top: 100%;
+}
+/***************************************** 
+	PAGE STYLES
+	**************************************/
+#site-wrapper {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	overflow: hidden;
+	nav {
+		top: 0;
+		width: 100%;
+		position: absolute;
+		li {
+			width: 25%;
+			float: left;
+			margin: 15px auto;
+			text-align: center;
+		}
+	}
+	.content-wrapper {
+		top: 40px;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		position: absolute;
+		overflow: hidden;
+	}
+	.table-center {
+		height: 100%;
+		margin: 0 auto;
+	}
+	.v-center {
+		height: 100%;
+	}
+	.container-team {
+		.content-wrapper {
+			overflow-y: scroll;
+			padding: 20px 0px;
+		}
+		.member-wrapper {
+			width: 50%;
+			height: 33%;
+			position: relative;
+			overflow: hidden;
+			display: inline-block;
+			.transition(1s);
+			&.selected {
+				width: 100%;
+				height: 100%;
+				.team-memeber {
+					padding: 0;
+				}
+				.head {
+					width: 25%;
+					height: 50%;
+					border: none;
+					background: transparent;
+				}
+				.member-name {
+					background: transparent;
+				}
+				.member-info {
+					width: 100%;
+					display: block;
+				}
+			}
+			&.unselected {
+				display: none;
+			}
+		}
+		.team-memeber {
+			width: 100%;
+			height: 100%;
+			padding: 33% 0;
+			position: relative;
+			overflow: hidden;
+			.transition(1s);
+		}
+		.head {
+			width: 100px;
+			height: 140px;
+			margin: 0 auto;
+			cursor: pointer;
+			overflow: hidden;
+			position: relative;
+			.transition(1s);
+			img {
+				width: 100%;
+				height: auto;
+			}
+		}
+		.member-name {
+			opacity: 0;
+			width: 100%;
+			height: 100%;
+			display: block;
+			font-weight: 600;
+			line-height: 8em;
+			position: absolute;
+			text-align: center;
+			font-size: (18em/16em);
+			vertical-align: middle;	
+			background-color: rgba(31, 95, 107, 0.5);
+			.transition(0.5s);
+			&:hover {
+				opacity: 1;
+			}
+		}
+		.member-title {
+			display: block;
+			text-align: left;
+			font-weight: 600;
+			font-size: (18em/16em);
+		}
+		.member-info {
+			float: left;
+			display: none;
+			padding: 30px 20px;
+			background: @darkBlue;
+			.transition(1s);
+			.drop-shadow(2px,2px,2px,0.5);
+		}
+	}
+	.container-contact {
+		.question-wrapper {
+			margin: 20% auto;
+			padding: 10px;
+			width: 100%;
+		}
+		.question-button {
+			text-align: right;
+			margin: 20px auto;
+		}
+	}
+	@media screen and (min-width: @tablet) {
+		.content-wrapper {
+			top: 40px;
+			left: 40px;
+			right: 40px;
+			bottom: 40px;
+			overflow: hidden;
+			position: absolute;
+		}	
+		nav {
+			height: 100%;
+			li {
+				margin: 0;
+				float: none;
+				width: auto;
+			}
+			.up {
+				top: 10px;
+				left: 50%;
+				position: absolute;
+			}
+			.right {
+				right: 10px;
+				top: 50%;
+				position: absolute;
+			}
+			.down {
+				bottom: 10px;
+				left: 50%;
+				position: absolute;
+			}
+			.left {
+				left: 10px;
+				top: 50%;
+				position: absolute;
+			}
+		}
+		.container-team {
+			.content-wrapper {
+				overflow-y: hidden;
+			}
+			.member-wrapper {
+				width: 25%;
+				&.selected {
+					.head {
+						float: left;
+						width: auto;
+						height: 100%;
+						width: 15%;
+					}
+					.member-info {
+						float: left;
+						max-width: 75%;
+						margin-left: 3%;
+					}
+				}
+			}
+		}
+		.container-contact {
+			.question-wrapper {
+				width: 460px;
+			}
+		}
+	}
+}

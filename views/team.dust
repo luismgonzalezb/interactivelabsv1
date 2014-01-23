@@ -1,0 +1,21 @@
+{>nav/}
+<div class="content-wrapper">
+	<div class="table-center">
+		<div class="v-center">
+			{#members}
+				<div id="{.name}" class="member-wrapper">
+					<div class="team-memeber">
+						<div class="head">
+							<span class="member-name">{.name}</span>
+							<img src="{.image}" alt="" >
+						</div>
+						<div class="member-info">
+							<p class='member-title'>{.mTitle}</p>
+							<p class="member-copy">{.copy}</p>
+						</div>
+					</div>
+				</div>
+			{/members}
+		</div>
+	</div>
+</div>

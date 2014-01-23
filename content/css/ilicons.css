@@ -1,0 +1,27 @@
+.sprite {
+background-image: url("/content/images/ILIcons.png");
+	background-repeat: no-repeat; 
+	display: inline-block;  
+	list-style: none outside none;
+}
+
+.sprite-home{background-position:0 0 ; width: 24px ; height: 24px; }
+.sprite-home-selected{background-position:-25px 0 ; width: 24px ; height: 24px; }
+.sprite-work{background-position:-50px 0 ; width: 24px ; height: 24px; }
+.sprite-work-selected{background-position:-75px 0 ; width: 24px ; height: 24px; }
+.sprite-us{background-position:-100px 0 ; width: 24px ; height: 24px; }
+.sprite-us-selected{background-position:-125px 0 ; width: 24px ; height: 24px; }
+.sprite-team{background-position:-150px 0 ; width: 24px ; height: 24px; }
+.sprite-team-selected{background-position:-175px 0 ; width: 24px ; height: 24px; }
+.sprite-contact{background-position:-200px 0 ; width: 24px ; height: 24px; }
+.sprite-contact-selected{background-position:-225px 0 ; width: 24px ; height: 24px; }
+.sprite-side-contact{background-position:-250px 0 ; width: 24px ; height: 24px; }
+.sprite-side-home{background-position:-275px 0 ; width: 24px ; height: 24px; }
+.sprite-side-work{background-position:-300px 0 ; width: 24px ; height: 24px; }
+.sprite-side-us{background-position:-325px 0 ; width: 24px ; height: 24px; }
+.sprite-side-team{background-position:-350px 0 ; width: 24px ; height: 24px; }
+.sprite-side-team-selected{background-position:-375px 0 ; width: 24px ; height: 24px; }
+.sprite-side-work-selected{background-position:-400px 0 ; width: 24px ; height: 24px; }
+.sprite-side-us-selected{background-position:-425px 0 ; width: 24px ; height: 24px; }
+.sprite-side-contact-selected{background-position:-450px 0 ; width: 24px ; height: 24px; }
+.sprite-side-home-selected{background-position:-475px 0 ; width: 24px ; height: 24px; }
