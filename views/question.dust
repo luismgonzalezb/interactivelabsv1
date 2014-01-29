@@ -3,7 +3,7 @@
 	<ul>
 		{#.question.responses}
 			<li class="radio"><label> 
-				<input type="radio" name="response" value="{.id}">
+				<input type="radio" name="response" value="{.response_id}">
 				{.answer}
 			</label></li>
 		{/.question.responses}

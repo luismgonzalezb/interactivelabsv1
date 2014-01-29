@@ -6,12 +6,12 @@
     "start": "node app.js"
   },
   "dependencies": {
-    "express": "*",
-    "dustjs-linkedin": "*",
+    "express": "~3.4.8",
+    "dustjs-linkedin": "~2.3.1",
     "dustjs-helpers": "*",
     "consolidate": "*",
-    "less": "*",
-    "node-minify": "*",
+    "less": "~1.6.1",
+    "node-minify": "~0.9.1",
     "node-uuid": "~1.4.1",
     "mongoose": "~3.8.4",
     "mongo-connect": "0.0.6"

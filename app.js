@@ -1,4 +1,3 @@
-
 /**
  * Module dependencies.
  */
@@ -9,7 +8,7 @@ var express = require('express'),
 	path = require('path'),
 	dust = require('dustjs-linkedin'),
 	cons = require('consolidate'),
-	less = require('./renderLess');
+	less = require('./lib/renderLess');
 
 less({
 	paths         : ['./content/less/'],// .less file search paths, the first on the array is used for the main less
@@ -30,17 +29,16 @@ app.engine('dust', cons.dust);
 app.use(express.cookieParser('tlespolcuatlo'));
 app.use(express.bodyParser());
 app.use(express.favicon());
-app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(app.router);
 app.use('/content', express.static(path.join(__dirname, 'content')));
-
-// development only
-if ('development' == app.get('env')) {
-	app.use(express.errorHandler());
-}
+app.use(function(err, req, res, next){
+	console.error(err.stack);
+	res.send(500, 'Something broke!');
+});
+//app.use(express.logger('dev')); Turn on to See all Traffic
 
 app.get('/', routes.index);
 app.get('/team', routes.team);

@@ -1,9 +1,9 @@
-
-var patterns = require('../backgroundFiles'),
+var patterns = require('../lib/backgroundFiles'),
 	files = patterns('./content/images/patterns'),
 	members = require('../data/members'),
+	uuid = require('node-uuid'),
 	questions = require('../data/questions'),
-	uuid = require('node-uuid');
+	errorHandler = require('../lib/errorHandler');
 
 // **************************************************************************
 // PAGES ********************************************************************
@@ -15,7 +15,7 @@ exports.index = function(req, res){
 
 exports.team = function(req, res){
 	members.getMembers(function(err, members) {
-		if (err) { ErrorHandler(err, req, res); }
+		if (err) { errorHandler.BadResponse(err, req, res); }
 		res.render('team', { title: 'Team', members: members });
 	});
 };
@@ -39,30 +39,37 @@ exports.contact = function(req, res){
 exports.question = function (req, res) {
 	if (req.cookies.sessionId) {
 		questions.getRandomQuestion(req.cookies.sessionId, function(err, question) {
-			if (err) { ErrorHandler(err, req, res); }
-			res.render('question', { question: question });
+			if (err) { Json_Respose(err, req, res); }
+			if (question) {
+				res.render('question', { question: question });
+			} else {
+				res.render('register');
+			}
 		});
 	} else {
-		ErrorHandler({ message: "User not defined" }, req, res);
+		errorHandler.BadResponse({ message: "User not defined" }, req, res);
 	}
 };
 
 exports.checkResponse = function (req, res) {
 	if (req.cookies.sessionId && req.body._id) {
-		console.log(req.body);
-		/*
 		questions.addUserResponse({
-			id: req.body._id,
+			_id: req.body._id,
 			sessionId: req.cookies.sessionId,
-			response_id: req.body.
+			response_id: req.body.response
+		}, function (err) {
+			if (err) { Json_Respose(err, req, res); }
+			questions.getRandomQuestion(req.cookies.sessionId, function(err, question) {
+				if (err) { Json_Respose(err, req, res); }
+				if (question) {
+					res.render('question', { question: question });
+				} else {
+					res.render('register');
+				}
+			});
 		});
-		questions.getQuestion(req.body._id, function (err, question) {
-			console.log(question);
-			res.status(200).json({ success: true });
-		});
-		*/
 	} else {
-		ErrorHandler({ message: "User not defined" }, req, res);
+		errorHandler.BadResponse({ message: "User not defined" }, req, res);
 	}
 };
 
@@ -76,7 +83,7 @@ exports.postMember = function(req, res) {
 			Json_Respose(err, req, res);
 		});
 	} else {
-		ErrorHandler({ mesasge: "Missing Data" }, req, res);
+		errorHandler.BadResponse({ mesasge: "Missing Data" }, req, res);
 	}
 };
 
@@ -86,7 +93,7 @@ exports.putMember = function (req, res) {
 			Json_Respose(err, req, res);
 		});
 	} else {
-		ErrorHandler({ mesasge: "Missing Data" }, req, res);
+		errorHandler.BadResponse({ mesasge: "Missing Data" }, req, res);
 	}
 };
 
@@ -100,7 +107,7 @@ exports.postQuestion = function (req, res) {
 			Json_Respose(err, req, res);
 		});
 	} else {
-		ErrorHandler({ mesasge: "Missing Data"}, req, res);
+		errorHandler.BadResponse({ mesasge: "Missing Data"}, req, res);
 	}
 };
 
@@ -110,21 +117,11 @@ exports.putQuestion = function (req, res) {
 			Json_Respose(err, req, res);
 		});
 	} else {
-		ErrorHandler({ userError: true, mesasge: "Missing Data"}, req, res);
+		errorHandler.BadResponse({ userError: true, mesasge: "Missing Data"}, req, res);
 	}
 };
 
-// **************************************************************************
-// EXTRA FUNCTIONS **********************************************************
-// **************************************************************************
-
 function Json_Respose (err, req, res) {
-	if (err) { ErrorHandler(err, req, res); }
+	if (err) { errorHandler.BadResponse(err, req, res); }
 	res.status(200).json({ success: true });
-}
-
-function ErrorHandler(err, req, res) {
-	console.log(err);
-	var mesasge = err.message || "System Error";
-	res.status(500).json({ success: false, mesasge: mesasge });
-}
+};
