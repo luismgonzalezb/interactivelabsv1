@@ -1,17 +1,21 @@
 var badOptions = { text: "", type: "error", layout: "bottom", timeout: 1500 };
 var goodOptions = { text: "", type: "success", layout: "bottom", timeout: 1500 };
 
+function submitFormRender(frm) {
+	var data = $(frm).serialize();
+	$.post(frm.action, data, function (response) {
+		if (response) {
+			$("#question-wrapper").html(response);
+		}
+	}).fail(function (e) {
+		badOptions.text = "There was an issue with the server please try again latter";
+		var n = noty(badOptions);
+	});
+}
+
 function sendResponse(frm) {
 	if ($("input[type=radio]:checked").length > 0) {
-		var data = $(frm).serialize();
-		$.post(frm.action, data, function (response) {
-			if (response) {
-				$("#question-wrapper").html(response);
-			}
-		}).fail(function (e) {
-			badOptions.text = "There was an issue with the server please try again latter";
-			var n = noty(badOptions);
-		});
+		submitFormRender(frm);
 	} else {
 		badOptions.text = "You need to select at least one answer";
 		var n = noty(badOptions);
@@ -21,15 +25,7 @@ function sendResponse(frm) {
 function register(frm) {
 	$(frm).validate({
 		submitHandler: function(frm) {
-			var data = $(frm).serialize();
-			$.post(frm.action, data, function (response) {
-				if (response) {
-					$("#question-wrapper").html(response);
-				}
-			}).fail(function (e) {
-				badOptions.text = "There was an issue with the server please try again latter";
-				var n = noty(badOptions);
-			});
+			submitFormRender(frm);
 		},
 		invalidHandler: function(e, v) {
 			badOptions.text = "";

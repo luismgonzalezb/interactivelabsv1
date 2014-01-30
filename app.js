@@ -47,12 +47,13 @@ app.get('/work', routes.work);
 app.get('/contact', routes.contact);
 app.get('/contact/question', routes.question);
 app.post('/contact', routes.checkResponse);
+app.post('/register', routes.register);
 
-app.post('/members/add', routes.postMember);
-app.put('/members/update', routes.putMember);
+app.post('/members', routes.postMember);
+app.put('/members', routes.putMember);
 
-app.post('/questions/add', routes.postQuestion);
-app.put('/questions/update', routes.putQuestion);
+app.post('/questions', routes.postQuestion);
+app.put('/questions', routes.putQuestion);
 
 http.createServer(app).listen(app.get('port'), function(){
 	console.log('Express server listening on port ' + app.get('port'));
