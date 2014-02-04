@@ -46,12 +46,12 @@ app.get('/us', routes.us);
 app.get('/work', routes.work);
 app.get('/contact', routes.contact);
 app.get('/contact/question', routes.question);
-app.post('/contact', routes.checkResponse);
+app.post('/contact', routes.addUserResponse);
 app.post('/register', routes.register);
-
+app.post('/project', routes.postProject);
+app.put('/project', routes.putProject);
 app.post('/members', routes.postMember);
 app.put('/members', routes.putMember);
-
 app.post('/questions', routes.postQuestion);
 app.put('/questions', routes.putQuestion);
 

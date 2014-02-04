@@ -1,5 +1,5 @@
 <h1>
-	Thank you for your 
+	Thank you for  
 	{?success} Contacting Us, We will contact you soon... {/success}
 	{^success} Trying, please check back when you have the answers... {/success}
 </h1>

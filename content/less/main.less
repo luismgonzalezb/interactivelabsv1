@@ -75,11 +75,32 @@ ul {
 	.table-center {
 		height: 100%;
 		margin: 0 auto;
+		display: table;
 	}
 	.v-center {
 		height: 100%;
+		display: table-cell;
+		text-align: center;
+		vertical-align: middle;
+	}
+	.container-home {
+		img {
+			width: 100%;
+			max-width: 516px;
+			height: auto;
+		}
+		.v-center {
+			padding: 0 15px;
+		}
 	}
 	.container-team {
+		.table-center {
+			display: block;
+		}
+		.v-center {
+			display: block;
+			text-align: left;
+		}
 		.content-wrapper {
 			overflow-y: scroll;
 			padding: 20px 0px;
@@ -147,7 +168,7 @@ ul {
 			text-align: center;
 			font-size: (18em/16em);
 			vertical-align: middle;	
-			background-color: rgba(31, 95, 107, 0.5);
+			background-color: rgba(95, 95, 95, 0.5);
 			.transition(0.5s);
 			&:hover {
 				opacity: 1;
@@ -163,20 +184,42 @@ ul {
 			float: left;
 			display: none;
 			padding: 30px 20px;
-			background: @darkBlue;
+			background: @darkGray;
 			.transition(1s);
-			.drop-shadow(2px,2px,2px,0.5);
+			.inner-shadow(2px,2px,2px,0.5);
+			.rounded();
 		}
 	}
 	.container-contact {
 		.question-wrapper {
-			margin: 10% auto;
 			padding: 10px;
 			width: 100%;
+			text-align: left;
 		}
 		.question-button {
 			text-align: right;
 			margin: 20px auto;
+		}
+	}
+	.container-us {
+		img, #video-container {
+			max-width: 640px;
+			width: 100%;
+			height: auto;
+			max-height: 390px;
+			margin: 0 auto;
+		}
+		.table-center {
+			width: 100%;
+		}
+		.v-center {
+			width: 100%;
+		}
+	}
+	.container-work {
+		.project-wrapper {
+			margin: 10px;
+			display: inline-block;
 		}
 	}
 	@media screen and (min-width: @tablet) {

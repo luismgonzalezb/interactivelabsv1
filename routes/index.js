@@ -9,7 +9,7 @@ var patterns = require('../lib/backgroundFiles'),
 // **************************************************************************
 
 exports.index = function(req, res){
-  res.render('index', { title: 'Home', files: files });
+	res.render('index', { title: 'Home', files: files });
 };
 
 exports.team = function(req, res){
@@ -21,7 +21,7 @@ exports.us = function(req, res){
 };
 
 exports.work = function(req, res){
-	res.render('work', { title: 'Team' });
+	utils.work(req, res);
 };
 
 exports.contact = function(req, res){
@@ -36,12 +36,24 @@ exports.question = function (req, res) {
 	contact.question(req, res);
 };
 
-exports.checkResponse = function (req, res) {
-	contact.checkResponse(req, res);
+exports.addUserResponse = function (req, res) {
+	contact.addUserResponse(req, res);
 };
 
 exports.register = function(req, res) {
 	contact.register(req, res);
+}
+
+// **************************************************************************
+// PROJECTS ******************************************************************
+// **************************************************************************
+
+exports.postProject = function(req, res) {
+	utils.postProject(req, res);
+}
+
+exports.putProject = function(req, res) {
+	utils.putProject(req, res);
 }
 
 // **************************************************************************

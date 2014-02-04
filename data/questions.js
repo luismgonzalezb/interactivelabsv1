@@ -23,12 +23,8 @@ var getQuestions = function (limit, callback) {
 };
 
 var getRandomQuestion = function (_sessionId, callback) {
-	question.count(function(err, count) {
-		if (err) { callback(err); }
-		var rand = Math.floor(Math.random() * count);
-		question.findOne({'userResponses.sessionId': {$ne : _sessionId}}).skip(rand).exec(function (err, result) {
-			callback(err, result);
-		});
+	question.findOne({'userResponses.sessionId': {$ne : _sessionId}}).exec(function (err, result) {
+		callback(err, result);
 	});
 };
 
@@ -54,13 +50,35 @@ var updateQuestion = function (data, callback) {
 	});
 };
 
+var checkUserResponses = function (_sessionId, callback) {
+	var passed = true;
+	question.aggregate([
+		{ $unwind: "$userResponses" },
+		{ $match : { "userResponses.sessionId" :  _sessionId} },
+		{ $sort : { question : 1 } },
+		{ $project : { _id : 0, response_id: "$userResponses.response_id" } }
+	], function (err, userResponses) {
+		if (err) { callback(err, null); }
+		question.find({}, { _id : 0, response_id : 1 }, { sort: { question : 1 } }, function (err, questionResponses) {
+			for (var i = userResponses.length - 1; i >= 0; i--) {
+				if (userResponses[i].response_id !== questionResponses[i].response_id) {
+					passed = false;
+					break;
+				}
+			}
+			callback(err, passed);
+		});		
+	});
+}
+
 var questions = {
 	addQuestion : addQuestion,
 	getQuestion : getQuestion,
 	getQuestions : getQuestions,
 	getRandomQuestion : getRandomQuestion,
 	addUserResponse : addUserResponse,
-	updateQuestion : updateQuestion
+	updateQuestion : updateQuestion,
+	checkUserResponses : checkUserResponses
 };
 
 module.exports = questions;

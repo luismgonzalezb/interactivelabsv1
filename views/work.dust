@@ -1,1 +1,12 @@
 {>nav/}
+<div class="content-wrapper">
+	<div class="table-center">
+		<div class="v-center">
+			{#projects}
+				<div class="project-wrapper">
+					<img src="{.logoBW}" alt="{.name}" />
+				</div>
+			{/projects}
+		</div>
+	</div>
+</div>

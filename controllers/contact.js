@@ -11,15 +11,22 @@ function question(req, res) {
 			if (question) {
 				res.render('question', { question: question });
 			} else {
-				res.render('register');
+				questions.checkUserResponses(req.cookies.sessionId, function(err, result) {
+					if (err) { jsonResponseHandler.Json_Response(err, req, res); }
+					if (result === true) {
+						res.render('register');
+					} else {
+						res.render('thankyou', { success: false });
+					}
+				});
 			}
 		});
 	} else {
 		jsonResponseHandler.BadResponse({ message: "User not defined" }, req, res);
 	}
-};
+}
 
-function checkResponse(req, res) {
+function addUserResponse(req, res) {
 	if (req.cookies.sessionId && req.body._id) {
 		questions.addUserResponse({
 			_id: req.body._id,
@@ -32,7 +39,7 @@ function checkResponse(req, res) {
 	} else {
 		jsonResponseHandler.BadResponse({ message: "User not defined" }, req, res);
 	}
-};
+}
 
 function register(req, res) {
 	if (req.cookies.sessionId && req.body.email) {
@@ -40,7 +47,7 @@ function register(req, res) {
 			if (err) { Json_Response(err, req, res); }
 			res.cookie('sessionId', '', { expires: new Date(1), path: '/' });
 			res.render('thankyou', { success: true });
-		})
+		});
 	} else {
 		jsonResponseHandler.BadResponse({message: "User note defined or Missing Form Data"}, req, res);
 	}
@@ -48,8 +55,8 @@ function register(req, res) {
 
 contact = {
 	question: question,
-	checkResponse : checkResponse,
+	addUserResponse : addUserResponse,
 	register : register
-}
+};
 
 module.exports = contact;

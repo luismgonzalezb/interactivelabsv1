@@ -1,10 +1,21 @@
 ﻿function menuUp() {
 	hideControls();
 	$("#main-container").screenContent().Up({
-		swapClass: "container-home",
+		swapClass: "container-us",
 		next: "/us",
 		pattern: getRandomPattern(),
 		onComplete: function (argument) {
+			$("#video-container").html('<iframe id="us-video" width="640" height="390" src="//www.youtube.com/embed/udgY9n2QnyY" frameborder="0" allowfullscreen></iframe>');
+			var usVideo = $("#us-video"),
+				fluidContainer = $("body"),
+				aspect = usVideo.height() / usVideo.width(),
+				originalWidth = usVideo.width();
+			$(window).resize(function() {
+				var newWidth = fluidContainer.width();
+				if (newWidth < originalWidth) {
+					usVideo.width(newWidth).height(newWidth * aspect);
+				}
+			}).resize();
 		}
 	});
 }

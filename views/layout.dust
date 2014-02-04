@@ -20,7 +20,7 @@
 			patternList.push("{.}");
 		{/files}
 		var swapContainer = document.getElementById("main-container");
-		swapContainer.style.backgroundImage = "url('/content/images/patterns/escheresque_ste.png')";
+		swapContainer.style.backgroundImage = "url('https://s3-us-west-2.amazonaws.com/ilusv1/escheresque_ste.png')";
 	</script>
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 	<script type="text/javascript" src="/content/scripts/scripts.min.js"></script>

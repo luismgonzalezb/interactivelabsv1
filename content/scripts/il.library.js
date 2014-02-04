@@ -33,7 +33,7 @@
 	};
 	this.initializeContainers = function (mainCont, swapCont, direction, pattern) {
 		var swapContainer = document.getElementById(swapCont.substring(1));
-		swapContainer.style.backgroundImage = "url('/content/images/patterns/" + pattern + "')";
+		swapContainer.style.backgroundImage = "url('https://s3-us-west-2.amazonaws.com/ilusv1/" + pattern + "')";
 		swapContainer.style.left = 0;
 		swapContainer.style.top = 0;
 		if (direction == "up") swapContainer.style.top = "-100%";

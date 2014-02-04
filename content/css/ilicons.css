@@ -1,5 +1,5 @@
 .sprite {
-background-image: url("/content/images/ILIcons.png");
+background-image: url("https://s3-us-west-2.amazonaws.com/ilusv1/ILIcons.png");
 	background-repeat: no-repeat; 
 	display: inline-block;  
 	list-style: none outside none;
