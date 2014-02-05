@@ -74,7 +74,7 @@ function WorkInit() {
 		currentDiv.off('click');
 		dust.render('project', projects[0], function(err, out) {
 			currentDiv.html(out);
-			window.mySwipe = Swipe(document.getElementById('slider'));
+			var mySwipe = Swipe(document.getElementById('slider'));
 		});
 	});
 	showControls();

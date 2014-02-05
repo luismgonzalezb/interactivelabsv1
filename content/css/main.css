@@ -54,6 +54,8 @@ ul {
   overflow: hidden;
   visibility: hidden;
   position: relative;
+  margin: 0 auto;
+  width: 512px;
 }
 .swipe-wrap {
   overflow: hidden;
@@ -270,7 +272,6 @@ ul {
   background: #333333;
   margin: 10px 0;
   padding: 10px;
-  text-align: left;
   -webkit-box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.5);
   box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.5);

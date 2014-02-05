@@ -11,10 +11,6 @@
 	<span>Link:
 		{?.link}<a href="{.link}">{.link}</a>{/.link}
 		{^.link} N/A{/.link}
-	</span>
-	<ul>
-		{#.services}
-			<li>{.}</li>
-		{/.services}
-	</ul>
+	</span></br>
+	<span>Services: {#.services}{.} {/.services}</span>
 </div>
