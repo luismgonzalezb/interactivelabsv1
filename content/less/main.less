@@ -45,6 +45,28 @@ ul {
 #swap-container {
 	top: 100%;
 }
+.swipe {
+  overflow: hidden;
+  visibility: hidden;
+  position: relative;
+}
+.swipe-wrap {
+	overflow: hidden;
+	position: relative;
+}
+.swipe-wrap > div {
+	float:left;
+	width:100%;
+	max-width: 512px;
+	position: relative;
+}
+.swipe-wrap {
+	div img {
+		display:block;
+		width: 100%;
+	}
+}
+
 /***************************************** 
 	PAGE STYLES
 	**************************************/
@@ -217,9 +239,38 @@ ul {
 		}
 	}
 	.container-work {
+		.content-wrapper {
+			overflow-y: scroll;
+		}
 		.project-wrapper {
 			margin: 10px;
 			display: inline-block;
+			cursor: pointer;
+			width: 200px;
+			height: 200px;
+			&.opened {
+				cursor: auto;
+				width: 100%;
+				height: auto;
+				background: @darkGray;
+				margin: 10px 0;
+				padding: 10px;
+				text-align: left;
+				.inner-shadow(2px,2px,2px,0.5);
+				.rounded();
+				.logo {
+					opacity: 0;
+				}
+			}
+		}
+		.logo {
+			top: 0;
+			left: 0;
+			.grayscale();
+			.transition(1s);
+			&:hover {
+				.grayscale(0);
+			}
 		}
 	}
 	@media screen and (min-width: @tablet) {
@@ -284,6 +335,8 @@ ul {
 			.question-wrapper {
 				width: 460px;
 			}
+		}
+		.container-work {
 		}
 	}
 }

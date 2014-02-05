@@ -1,0 +1,20 @@
+<div>
+	<h1>{.name}</h1>
+	<h2>{.customer}</h2>
+	<div id="slider" class="swipe">
+		<div class="swipe-wrap">
+			{#.photoset}
+				<div><img src="{.}" alt="" /></div>
+			{/.photoset}
+		</div>
+	</div>
+	<span>Link:
+		{?.link}<a href="{.link}">{.link}</a>{/.link}
+		{^.link} N/A{/.link}
+	</span>
+	<ul>
+		{#.services}
+			<li>{.}</li>
+		{/.services}
+	</ul>
+</div>

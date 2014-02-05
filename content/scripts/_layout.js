@@ -38,8 +38,7 @@ function menuLeft() {
 		swapClass: "container-work",
 		next: "/work",
 		pattern: getRandomPattern(),
-		onComplete: function (argument) {
-		}
+		onComplete: WorkInit
 	});
 }
 
@@ -64,6 +63,19 @@ function TeamInit() {
 			elem.className = elem.className.replace("selected", "");
 			$(".member-wrapper:not(#" + divId + ")").removeClass("unselected");
 		}
+	});
+	showControls();
+}
+
+function WorkInit() {
+	$(".project-wrapper").on( "click", function() {
+		var currentDiv = $(this);
+		currentDiv.addClass("opened");
+		currentDiv.off('click');
+		dust.render('project', projects[0], function(err, out) {
+			currentDiv.html(out);
+			window.mySwipe = Swipe(document.getElementById('slider'));
+		});
 	});
 	showControls();
 }

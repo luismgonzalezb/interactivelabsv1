@@ -7,7 +7,7 @@ var project  = new schema({
 	link: String,
 	logo: String,
 	logoBW : String,
-	phtotoset: [String],
+	photoset: [String],
 	services: [String]
 });
 

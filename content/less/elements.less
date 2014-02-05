@@ -154,3 +154,12 @@
   -webkit-background-clip: @argument;
   background-clip: @argument;
 }
+.grayscale(@percentage : 100%) { 
+  -webkit-filter: grayscale(@percentage);
+  -moz-filter: grayscale(@percentage);
+  -ms-filter: grayscale(@percentage);
+  -o-filter: grayscale(@percentage);
+  filter: grayscale(@percentage);
+  filter: url(grayscale.svg); /* Firefox 4+ */
+  filter: gray; /* IE 6-9 */
+}

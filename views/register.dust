@@ -2,11 +2,11 @@
 <form action="/register" role="form" method="post" onsubmit="return false;">
 	<div class="form-group">
 		<label for="email">Email</label>
-		<input type="email" class="form-control" name="email" id="email" placeholder="email">
+		<input type="email" class="form-control" name="email" id="email" placeholder="Email">
 	</div>
 	<div class="form-group">
-		<label for="fullName">Full Name</label>
-		<input type="text" class="form-control" name="fullName" id="fullName" placeholder="Full Name">
+		<label for="name">Full Name</label>
+		<input type="text" class="form-control" name="name" id="name" placeholder="Full Name">
 	</div>
 	<div class="form-group">
 		<label for="why">Why are you trying to join us?</label>
