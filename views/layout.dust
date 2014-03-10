@@ -7,6 +7,9 @@
 	<link rel="stylesheet" type="text/css" href="/content/css/styles.min.css">
 </head>
 <body>
+	<div>
+		<a href="whatsapp://send?text=hi" alt="" >OPEN WHATSAPP</a>
+	</div>
 	<div id="site-wrapper">
 		<section id="main-container" class="container container-home">
 			{+content}
